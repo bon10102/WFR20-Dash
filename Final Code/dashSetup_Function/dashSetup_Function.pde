@@ -26,6 +26,7 @@ ArrayList<Parameter> instruments = new ArrayList<Parameter>();
 
 
 void setup() {
+  println(Serial.list());
   size(800, 400);
   strokeWeight(5);
   smooth();
@@ -36,7 +37,7 @@ void setup() {
 
   //waynes setup
   //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
-  myPort = new Serial(this, "COM8", 9600, 'O', 8, 1); //use this for windows
+  myPort = new Serial(this, "/dev/tty.usbserial-DN05NYGH", 9600, 'O', 8, 1); //use this for windows
   //finds the new line character before going to serial event
   myPort.bufferUntil('\n');
   println("Serial Source Found!");
@@ -231,32 +232,32 @@ void text() {
 }
 
 void lessThanTen() {
-  stroke(51, 255, 153);
+  stroke(0,255,44);
   strokeCap(SQUARE);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(180), radians(195));
 }
 
 void tenToTwenty() {
-  stroke(51, 255, 51);
+  stroke(75, 255, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(195), radians(210));
 }
 
 void twentyToThirty() {
-  stroke(51, 255, 51);
+  stroke(114, 255, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(210), radians(225));
 }
 
 void thirtyToForty() {
-  stroke(153, 255, 51);
+  stroke(152, 255, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(225), radians(240));
 }
 
 void fortyToFifty() {
-  stroke(255, 255, 0);
+  stroke(182, 255, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(240), radians(255));
 }
@@ -268,37 +269,37 @@ void fiftyToSixty() {
 }
 
 void sixtyToSeventy() {
-  stroke(255, 255, 0);
+  stroke(255, 230, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(270), radians(285));
 }
 
 void seventyToEighty() {
-  stroke(255, 255, 0);
+  stroke(255, 213, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(285), radians(300));
 }
 
 void eightyToNinety() {
-  stroke(255, 255, 0);
+  stroke(255, 175, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(300), radians(315));
 }
 
 void ninetyToHundred() {
-  stroke(255, 255, 0);
+  stroke(255, 102, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(315), radians(330));
 }
 
 void hundredToHundredTen() {
-  stroke(255, 255, 0);
+  stroke(255, 72, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(330), radians(345));
 }
 
 void hundredTenToHundredTwenty() {
-  stroke(255, 255, 0);
+  stroke(255, 21, 0);
   strokeWeight(88);
   arc(400, 180, 264, 264, radians(345), radians(360));
 }
