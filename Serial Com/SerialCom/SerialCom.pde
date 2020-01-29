@@ -7,8 +7,10 @@ float voltage = 0;
 String serialData;
 String val;
 boolean firstContact = false;
-Parameter<Integer> spd;
-Parameter<Float> vlt;
+//PUT ALL PARAMETER OBJECTS HERE
+Parameter<Integer> spd = new Parameter (Integer.class, 's', "Speed", 0);;
+Parameter<Float> vlt = new Parameter (Float.class, 'v', "Voltage", 0.0);
+//
 ArrayList<Parameter> instruments = new ArrayList<Parameter>();
 float sum;
 
@@ -19,8 +21,7 @@ void setup() {
   //finds the new line character before going to serial event
   myPort.bufferUntil('\n');
   println("Serial Source Found!");
-  spd = new Parameter ('s', "Speed", 0);
-  vlt = new Parameter ('v', "Voltage", 0.0);
+  //ADD ALL PARAMETERS TO INSTRUMENTS ARRAYLIST
   instruments.add(spd);
   instruments.add(vlt);
 }
@@ -29,8 +30,6 @@ void draw() {
   background (200, 0, 0);
   textSize(20);
   sum = spd.getData() + vlt.getData();
-  //text ("speed: " + speed, 100, 100);
-  //text ("voltage: " + voltage, 100, 200);
   text (instruments.get(0).getLabel()+ spd.getData(), 100, 100);
   text (instruments.get(1).getLabel() + vlt.getData(), 100, 200);
   text (sum, 100, 150);
@@ -42,7 +41,7 @@ void serialEvent(Serial myPort) {
 
   if (serialData != null) {
     serialData = trim(serialData);
-    
+
     //perform handshake with arduino (only does this once)
     if (firstContact == false || serialData.equals("'")) { 
       //if (serialData.equals("'")) {
@@ -51,33 +50,26 @@ void serialEvent(Serial myPort) {
       myPort.write("'");
       println("Contact Established");
       // }
-      
+
       //determines which variable to update based on flag (bit 1)
       //use this part to update any variables on the dashboard. Ensure they are converted to the correct datatype
-      
+
       //this part will update all parameters stated and automatically detect datatype
     } else {
-      /*
-      for (int i = 0; i < instruments.size(); i++){
-        if (serialData.charAt(0) == instruments.get(i).getIdent()){
+      for (int i = 0; i < instruments.size(); i++) {
+        if (serialData.charAt(0) == instruments.get(i).getIdent()) {
           instruments.get(i).updateData(serialData.substring(1));
         }
-      }
-      */
-      for (int i = 0; i < instruments.size(); i++){
-        if (serialData.charAt(0) == instruments.get(i).getIdent()){
-          instruments.get(i).updateData(serialData.substring(1));
-        }
-      }
-      /*
+        /*
       if (serialData.charAt(0) == 's') {
-        //speed = Integer.valueOf(serialData.substring(1));
-        spd.updateData(Integer.valueOf(serialData.substring(1)));
-      } else if (serialData.charAt(0) == 'v') {
-        //voltage = Float.valueOf(serialData.substring(1));
-        vlt.updateData(Float.valueOf(serialData.substring(1)));
+         //speed = Integer.valueOf(serialData.substring(1));
+         spd.updateData(Integer.valueOf(serialData.substring(1)));
+         } else if (serialData.charAt(0) == 'v') {
+         //voltage = Float.valueOf(serialData.substring(1));
+         vlt.updateData(Float.valueOf(serialData.substring(1)));
+         }
+         */
       }
-      */
     }
-  } 
+  }
 }
