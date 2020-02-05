@@ -14,7 +14,7 @@ private class Parameter<T> {
   }
 
   String getLabel() {
-    return label;
+    return label+ ": ";
   }
   
   T getData() {
