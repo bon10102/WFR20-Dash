@@ -21,12 +21,10 @@ void serialEvent(Serial myPort) {
     } else {
 
 
-      if (serialData.charAt(0) == 's') {
-        //speed = Integer.valueOf(serialData.substring(1));
-        speed.updateData(Integer.valueOf(serialData.substring(1)));
-      } else if (serialData.charAt(0) == 'v') {
-        //voltage = Float.valueOf(serialData.substring(1));
-        voltage.updateData(Float.valueOf(serialData.substring(1)));
+      for (int i = 0; i < instruments.size(); i++) {
+        if (serialData.charAt(0) == instruments.get(i).getIdent()) {
+          instruments.get(i).updateData(serialData.substring(1));
+        }
       }
     }
   }

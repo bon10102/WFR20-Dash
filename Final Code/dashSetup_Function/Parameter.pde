@@ -1,12 +1,14 @@
-private class Parameter<T> {
+public class Parameter<T> {
   char id;
   String label;
   T data;
-  
-  private Parameter (char ident, String name, T initialValue) {
-    id = ident;
-    label = name;
-    data = initialValue;
+  private final Class<T> type;
+
+  public Parameter (Class<T> type, char id, String label, T initialData) {
+    this.id = id;
+    this.label = label;
+    data = initialData;
+    this.type = type;
   }
 
   char getIdent() {
@@ -14,14 +16,24 @@ private class Parameter<T> {
   }
 
   String getLabel() {
-    return label+ ": ";
+    return label+":";
   }
-  
+
   T getData() {
     return data;
   }
-
-  void updateData(T newData) {
-    data = newData;
+  @SuppressWarnings("unchecked")
+    void updateData(String newData) {
+    if (type.isAssignableFrom(String.class)) {
+      data = (T) newData;
+    } else if (type.isAssignableFrom(Integer.class)) {
+      data = (T) Integer.valueOf(newData);
+    } else if (type.isAssignableFrom(Boolean.class)) {
+      data = (T) Boolean.valueOf(newData);
+    } else if (type.isAssignableFrom(Float.class)) {
+      data = (T) Float.valueOf(newData);
+    } else {
+      throw new IllegalArgumentException("Bad type.");
+    }
   }
 }

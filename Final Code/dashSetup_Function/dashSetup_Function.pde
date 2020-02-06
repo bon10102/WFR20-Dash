@@ -46,23 +46,23 @@ void setup() {
   blackLogo.resize(800, 150);
 
   //waynes setup
-  //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
+  myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
   // myPort = new Serial(this, "/dev/tty.usbserial-DN05NYGH", 9600, 'O', 8, 1); //use this for windows
   //finds the new line character before going to serial event
-  // myPort.bufferUntil('\n');
+  myPort.bufferUntil('\n');
   println("Serial Source Found!");
-  speed = new Parameter ('s', "speed.getData()", 100);
-  voltage = new Parameter ('v', "Voltage", 0.0);
+  speed = new Parameter (Integer.class,'s', "speed.getData()", 100);
+  voltage = new Parameter (Float.class,'v', "Voltage", 0.0);
   //Spencer added these make sure they are okay wayne
-  maxCellVoltage = new Parameter('a', "Max Cell Voltage", 0);
-  minCellVoltage = new Parameter('b', "Min Cell Voltage", 0);
-  avgCellTemp = new Parameter('c', "Average Cell Temp", 0);
-  motorTemp = new Parameter('d', "Motor Temp", 0);
-  inverterTemp = new Parameter('e', "Inverter Temp", 0);
-  brakeTemp = new Parameter('f', "Brake Temp", 0);
-  gearboxTemp = new Parameter('g', "Gearbox Temp", 0);
-  rearFrameTemp = new Parameter('h', "Rear Frame Temp", 0);
-  maxCellTemp = new Parameter('i', "Max Cell Temp", 0);
+  maxCellVoltage = new Parameter(Float.class,'a', "Max Cell Voltage", 0);
+  minCellVoltage = new Parameter(Float.class,'b', "Min Cell Voltage", 0);
+  avgCellTemp = new Parameter(Float.class,'c', "Average Cell Temp", 0);
+  motorTemp = new Parameter(Float.class,'d', "Motor Temp", 0);
+  inverterTemp = new Parameter(Float.class,'e', "Inverter Temp", 0);
+  brakeTemp = new Parameter(Float.class,'f', "Brake Temp", 0);
+  gearboxTemp = new Parameter(Float.class,'g', "Gearbox Temp", 0);
+  rearFrameTemp = new Parameter(Float.class,'h', "Rear Frame Temp", 0);
+  maxCellTemp = new Parameter(Float.class,'i', "Max Cell Temp", 0);
 
   instruments.add(speed);
   instruments.add(voltage);
