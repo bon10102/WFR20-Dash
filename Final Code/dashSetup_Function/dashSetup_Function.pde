@@ -1,7 +1,7 @@
 //variables
-PImage wfrLogo;
-PImage ralphOK;
-PImage skateGlobal;
+//PImage wfrLogo;
+//PImage ralphOK;
+//PImage skateGlobal;
 String driveMode="WUMBO";
 float power;
 float totalTime;
@@ -36,8 +36,8 @@ void setup() {
   size(800, 400);
   strokeWeight(5);
   smooth();
-  car = loadImage("blackcar.png");
-  car.resize(200, 100);
+  //car = loadImage("blackcar.png");
+  //car.resize(200, 100);
 
   //waynes setup
   //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
@@ -53,13 +53,13 @@ void setup() {
 }
 
 void draw() {
-  if (doneLoading == false) {
-    String[] periods = {" ",".", "..", "..."};
+  //if (doneLoading == false) {
+    //String[] periods = {" ",".", "..", "..."};
     textSize(36);
     background (0);
-    text ("loading" + periods[int(periodCounter)], width/2-60, 70);
-    image(car, carLoadPos, height-200); 
-    if (carLoadPos < width+200){
+    //text ("loading" + periods[int(periodCounter)], width/2-60, 70);
+    //image(car, carLoadPos, height-200); 
+    /*if (carLoadPos < width+200){
       carLoadPos += 3;
     } else {
       carLoadPos = -200;
@@ -76,6 +76,8 @@ void draw() {
       dashSetup();
     }
   }
+}*/
+dashSetup();
 }
 
 

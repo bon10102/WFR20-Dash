@@ -1,7 +1,7 @@
 //function that displays speed arc
 void speedArc(){
    //display speed arc depending on current speed value
-    if (speed.getData()<=10&& speed.getData()>0) {//less than 10
+    if (speed.getData()<=10 && speed.getData()>0) {//less than 10
       lessThanTen();
     }
     if (speed.getData()>=10 && speed.getData()<20) {//10 to 20
