@@ -12,7 +12,7 @@ void faultBar() {
     textAlign(LEFT);
     textSize(65);
     text("OKAY", 100, 385);//not showing up for buttonCounter even numbers, dont know why
-    println("fault flag false");
+    //println("fault flag false");
   } else if (faultFlag==true) {//fault triggered
     //imageMode(CORNER);
     //image(skateGlobal, 0, 300);

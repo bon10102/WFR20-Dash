@@ -12,7 +12,7 @@ void loadImage() {
   //blackLogo= loadImage("WFR.png");
   //blackLogo.resize(800, 150);
   println("done load screen");
-  speed = new Parameter (Integer.class, 's', "speed.getData()", 0);
+  speed = new Parameter (Integer.class, 's', "speed", 0);
   voltage = new Parameter (Float.class, 'v', "Voltage", 0.0);
   //Spencer added these make sure they are okay wayne
   maxCellVoltage = new Parameter(Float.class, 'a', "Max Cell Voltage", 0);
