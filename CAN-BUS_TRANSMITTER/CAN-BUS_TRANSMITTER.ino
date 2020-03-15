@@ -11,7 +11,7 @@ MCP_CAN CAN(spiCSPin);
 void setup() {
   Serial.begin(115200);
 
-  while (CAN.begin(CAN_500KBPS)!= CAN_OK ) {
+  while (CAN.begin(MCP_ANY, CAN_500KBPS, MCP_16MHZ)!= CAN_OK ) {
     Serial.println("CAN BUS init Failed");
     delay(100);
   }
