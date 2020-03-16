@@ -1,5 +1,5 @@
 // CAN Receive Example
-//
+// USE THE CAN SHIELD ARDUINO
 
 #include <mcp_can.h>
 #include <SPI.h>

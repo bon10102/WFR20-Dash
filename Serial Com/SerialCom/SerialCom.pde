@@ -17,7 +17,7 @@ float sum;
 void setup() {
   size (300, 300);
   //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
-  myPort = new Serial(this, "COM4", 115200, 'O', 8, 1); //use this for windows
+  myPort = new Serial(this, "COM4", 1000000, 'O', 8, 1); //use this for windows
   //finds the new line character before going to serial event
   myPort.bufferUntil('\n');
   println("Serial Source Found!");
@@ -56,6 +56,7 @@ void serialEvent(Serial myPort) {
 
       //this part will update all parameters stated and automatically detect datatype
     } else {
+      println("Update Data");
       for (int i = 0; i < instruments.size(); i++) {
         if (serialData.charAt(0) == instruments.get(i).getIdent()) {
           instruments.get(i).updateData(serialData.substring(1));
