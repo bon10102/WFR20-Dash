@@ -17,7 +17,7 @@ float sum;
 void setup() {
   size (300, 300);
   //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
-  myPort = new Serial(this, "COM4", 1000000, 'O', 8, 1); //use this for windows
+  myPort = new Serial(this, "COM4", 4800, 'O', 8, 1); //use this for windows
   //finds the new line character before going to serial event
   myPort.bufferUntil('\n');
   println("Serial Source Found!");
@@ -44,12 +44,12 @@ void serialEvent(Serial myPort) {
 
     //perform handshake with arduino (only does this once)
     if (firstContact == false || serialData.equals("'")) { 
-      //if (serialData.equals("'")) {
+      if (serialData.equals("'")) {
       myPort.clear();
       firstContact = true;
       myPort.write("'");
       println("Contact Established");
-      // }
+       }
 
       //determines which variable to update based on flag (bit 1)
       //use this part to update any variables on the dashboard. Ensure they are converted to the correct datatype
@@ -57,6 +57,7 @@ void serialEvent(Serial myPort) {
       //this part will update all parameters stated and automatically detect datatype
     } else {
       println("Update Data");
+      println(serialData);
       for (int i = 0; i < instruments.size(); i++) {
         if (serialData.charAt(0) == instruments.get(i).getIdent()) {
           instruments.get(i).updateData(serialData.substring(1));

@@ -12,7 +12,7 @@ char msgString[128];
 MCP_CAN CAN0(9);
 
 void setup() {
-  Serial.begin(1000000, SERIAL_8O1);
+  Serial.begin(4800, SERIAL_8O1);
   // Initialize MCP2515 running at 16MHz with a baudrate of 500kb/s and the masks and filters disabled.
   /*if (*/CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_16MHZ) /*== CAN_OK)*/;
     //Serial.println("MCP2515 Initialized Successfully!");
@@ -21,6 +21,7 @@ void setup() {
   CAN0.setMode(MCP_NORMAL);                     // Set operation mode to normal so the MCP2515 sends acks to received data.
   //pinMode(3, INPUT_PULLUP);
   //pinMode(4, INPUT_PULLUP);
+  delay(100);
   establishContact();
 }
 
@@ -29,7 +30,8 @@ void loop() {
   {
     CAN0.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   }
-  spd = rxBuf[7];
+  //spd = rxBuf[3];
+  spd = 50;
   Serial.print("s");
   Serial.print(spd);
   Serial.println();

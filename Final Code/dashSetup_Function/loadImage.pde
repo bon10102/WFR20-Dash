@@ -1,6 +1,6 @@
 void loadImage() {
-  //wfrLogo = loadImage("logoNoBackground.png");
-  //wfrLogo.resize(400, 50);
+  wfrLogo = loadImage("logoNoBackground.png");
+  wfrLogo.resize(400, 50);
   //ralphOK = loadImage("ralphOK.png");
   //ralphOK.resize(100, 100);
   println("done Logo");
@@ -8,9 +8,9 @@ void loadImage() {
   //skateGlobal.resize(100, 100);
 
   //car driving across setup
-  
-  //blackLogo= loadImage("WFR.png");
-  //blackLogo.resize(800, 150);
+
+  blackLogo= loadImage("WFR.png");
+  blackLogo.resize(800, 150);
   println("done load screen");
   speed = new Parameter (Integer.class, 's', "speed", 0);
   voltage = new Parameter (Float.class, 'v', "Voltage", 0.0);
@@ -24,5 +24,7 @@ void loadImage() {
   gearboxTemp = new Parameter(Float.class, 'g', "Gearbox Temp", 0);
   rearFrameTemp = new Parameter(Float.class, 'h', "Rear Frame Temp", 0);
   maxCellTemp = new Parameter(Float.class, 'i', "Max Cell Temp", 0);
+  instruments.add(speed);
+  instruments.add(voltage);
   doneLoading = true;
 }

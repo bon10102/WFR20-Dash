@@ -1,5 +1,5 @@
 //variables
-//PImage wfrLogo;
+PImage wfrLogo;
 //PImage ralphOK;
 //PImage skateGlobal;
 String driveMode="WUMBO";
@@ -36,31 +36,30 @@ void setup() {
   size(800, 400);
   strokeWeight(5);
   smooth();
-  //car = loadImage("blackcar.png");
-  //car.resize(200, 100);
+  car = loadImage("blackcar.png");
+  car.resize(200, 100);
 
   //waynes setup
   //myPort = new Serial(this, "/dev/ttyUSBO", 9800, 'O', 8, 1); //use this for raspberry pi, and use bottom usb port closest to ethernet jack
-  myPort = new Serial(this, "COM4", 1000000, 'O', 8, 1);
+  myPort = new Serial(this, "COM4", 4800, 'O', 8, 1);
   // myPort = new Serial(this, "/dev/tty.usbserial-DN05NYGH", 9600, 'O', 8, 1); //use this for windows
   //finds the new line character before going to serial event
   myPort.bufferUntil('\n');
   println("Serial Source Found!");
 
 
-  instruments.add(speed);
-  instruments.add(voltage);
+
   thread("loadImage");
 }
 
 void draw() {
-  //if (doneLoading == false) {
-    //String[] periods = {" ",".", "..", "..."};
+  if (doneLoading == false) {
+    String[] periods = {" ",".", "..", "..."};
     textSize(36);
     background (0);
-    //text ("loading" + periods[int(periodCounter)], width/2-60, 70);
-    //image(car, carLoadPos, height-200); 
-    /*if (carLoadPos < width+200){
+    text ("loading" + periods[int(periodCounter)], width/2-60, 70);
+    image(car, carLoadPos, height-200); 
+    if (carLoadPos < width+200){
       carLoadPos += 3;
     } else {
       carLoadPos = -200;
@@ -77,8 +76,6 @@ void draw() {
       dashSetup();
     }
   }
-}*/
-dashSetup();
 }
 
 

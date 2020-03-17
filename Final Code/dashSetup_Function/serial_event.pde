@@ -12,6 +12,7 @@ void serialEvent(Serial myPort) {
         firstContact = true;
         myPort.write("'");
         println("Contact Established");
+        delay(100);
       }
 
       //determines which variable to update based on flag (bit 1)
@@ -20,6 +21,7 @@ void serialEvent(Serial myPort) {
       //this part will update all parameters stated and automatically detect datatype
     } else {
       println("UPDATED DATA!");
+      println(serialData);
       for (int i = 0; i < instruments.size(); i++) {
         if (serialData.charAt(0) == instruments.get(i).getIdent()) {
           instruments.get(i).updateData(serialData.substring(1));
