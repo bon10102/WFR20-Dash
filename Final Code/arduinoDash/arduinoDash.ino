@@ -30,8 +30,7 @@ void loop() {
   {
     CAN0.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
   }
-  //spd = rxBuf[3];
-  spd = 50;
+  spd = rxBuf[3];
   Serial.print("s");
   Serial.print(spd);
   Serial.println();

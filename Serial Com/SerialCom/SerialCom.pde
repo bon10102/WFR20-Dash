@@ -8,7 +8,7 @@ String serialData;
 String val;
 boolean firstContact = false;
 //PUT ALL PARAMETER OBJECTS HERE
-Parameter<Integer> spd = new Parameter (Integer.class, 's', "Speed", 0);;
+Parameter<Integer> spd = new Parameter (Integer.class, 's', "Speed", 0);
 Parameter<Float> vlt = new Parameter (Float.class, 'v', "Voltage", 0.0);
 //
 ArrayList<Parameter> instruments = new ArrayList<Parameter>();
